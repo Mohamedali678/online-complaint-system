@@ -1,6 +1,6 @@
 function FormModel ({closeModel}){
 
-    return <div className="bg-[rgba(0,0,0,0.8)] w-full h-[800px] fixed -top-24">
+    return <div className="bg-[rgba(80,78,78,0.8)] w-full h-[800px] fixed -top-24">
 
     <div className=" bg-white fixed top-10 bottom-3 left-[490px] w-[400px] rounded p-10" >
 
