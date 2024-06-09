@@ -6,8 +6,10 @@ function Header(){
         <div className="flex gap-10 text-3xl text-orange-500" >
             <Link className="font-semibold">Home</Link>
             <Link className="font-semibold">About Us</Link>
-        </div>       
+        </div>
+        <Link to="/course">
         <button  className="text-orange-500 border-orange-500 border-2 font-bold rounded-full text-2xl px-10 py-3 hover:bg-orange-500 hover:text-white" >Admin area</button>
+        </Link>       
     </div>
 }
 
