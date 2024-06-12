@@ -5,14 +5,22 @@ import Course from "./pages/Course"
 import Attendance from "./pages/Attendance"
 import Reports from "./pages/Reports"
 import Dashboard from "./pages/Dashboard"
-function App(){
+import Details from "./components/Details"
 
+function App(){
+  
     return (
       <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/dashboard" element={
           <Sidenav>
             <Dashboard />
+          </Sidenav>
+        } />
+
+        <Route path="/details/:id" element={
+          <Sidenav>
+            <Details />
           </Sidenav>
         } />
         

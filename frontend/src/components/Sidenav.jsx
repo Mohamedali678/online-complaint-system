@@ -28,7 +28,7 @@ function Sidenav({children}){
             }
         {
             isOpen === true ? <i class="fa-solid fa-book"></i> :
-        <NavLink to="/course"> <i class="fa-solid fa-book"></i> Courses</NavLink>
+        <NavLink to="/course"> <i class="fa-solid fa-book"></i> Complaints</NavLink>
         }
         {
             isOpen === true ? <i class="fa-solid fa-table"></i> :
