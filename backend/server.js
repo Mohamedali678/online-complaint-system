@@ -11,8 +11,11 @@ mongoose.connect("mongodb://localhost:27017").then(() => {
 }).catch((error) => console.log(error))
 
 const complaintRoute = require("./routes/complaintRoute")
+const adminRoute = require("./routes/adminRoute")
 
+app.use(adminRoute)
 app.use(complaintRoute)
+
 
 app.listen(1000, () => {
     console.log("Server is running on port 3000")

@@ -1,10 +1,20 @@
 import { useState } from "react"
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 
 function Sidenav({children}){
 
 
     const [isOpen, setisOpen] = useState(false)
+
+    const isAuth = localStorage.getItem("admin")
+    const navigate = useNavigate()
+
+    const logout = () => {
+        if(isAuth){
+            localStorage.clear()
+            navigate("/login")
+        }
+    }
 
     const handleIsOpen = () => {
         setisOpen(true)
@@ -30,17 +40,10 @@ function Sidenav({children}){
             isOpen === true ? <i class="fa-solid fa-book"></i> :
         <NavLink to="/course"> <i class="fa-solid fa-book"></i> Complaints</NavLink>
         }
-        {
-            isOpen === true ? <i class="fa-solid fa-table"></i> :
-        <NavLink to="/attendance"> <i class="fa-solid fa-table"></i> Attendance</NavLink>
-        }
-        {
-            isOpen === true ? <i class="fa-solid fa-file"></i>: 
-        <NavLink to="/report"> <i class="fa-solid fa-file"></i> Reports</NavLink>
-        }
+        
         {
             isOpen === true ?  <i class="fa-solid fa-gear"></i>:
-        <NavLink> <i class="fa-solid fa-gear"></i> Setting</NavLink>
+        <NavLink onClick={logout} to="/login" > <i class="fa-solid fa-gear"></i> Logout</NavLink>
         }
         
         </div>

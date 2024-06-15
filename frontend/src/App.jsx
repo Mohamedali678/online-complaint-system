@@ -2,18 +2,24 @@ import {Routes, Route} from "react-router-dom"
 import Sidenav from "./components/Sidenav"
 import Home from "./pages/Home"
 import Course from "./pages/Course"
-import Attendance from "./pages/Attendance"
-import Reports from "./pages/Reports"
 import Dashboard from "./pages/Dashboard"
 import Details from "./components/Details"
+import Login from "./pages/Login"
 
 function App(){
+
+  const isAuth = localStorage.getItem("admin")
   
     return (
       <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      
+      {
+        isAuth ? 
+      <> 
       <Route path="/dashboard" element={
-          <Sidenav>
+        <Sidenav>
             <Dashboard />
           </Sidenav>
         } />
@@ -25,20 +31,15 @@ function App(){
         } />
         
       <Route path="/course" element={
-          <Sidenav>
+        <Sidenav>
             <Course />
           </Sidenav>
         } />
-        <Route path="/attendance" element={
-          <Sidenav>
-            <Attendance />
-          </Sidenav>
-        } />
-        <Route path="/report" element={
-          <Sidenav>
-            <Reports />
-          </Sidenav>
-        } />
+        </>
+       :
+       <Route path="/login" element={<Login />} />
+
+      }
     </Routes>
     )
 }

@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import toast, { Toaster } from 'react-hot-toast';
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 function FormModel ({closeModel}){
@@ -9,11 +10,14 @@ function FormModel ({closeModel}){
     const [description, setDescription] = useState("")
     const [error, setError] = useState(false)
 
+    const [loading, setLoading] = useState(false)
+
     const checkEmpty = () => {
         return title == "" || description == ""
     }
 
     const registerComplaint = (e) => {
+        setLoading(true)
         e.preventDefault()
         if(checkEmpty() ){
             setError(true)
@@ -32,6 +36,7 @@ function FormModel ({closeModel}){
             });
             setTitle("")
             setDescription("")
+            setLoading(false)
     
             }
         ).catch((error) => console.log(error))
@@ -54,7 +59,14 @@ function FormModel ({closeModel}){
 
         <div className="flex gap-10"> 
         <button onClick={closeModel} className="bg-red-300 text-2xl py-1 rounded px-4">Close</button>
-        <button onClick={registerComplaint} className="bg-orange-500 text-2xl py-1 rounded px-4">Send</button>
+        {
+               loading ? <ClipLoader
+                    color="red"
+                    loading={loading}
+                    size={30} />
+                    :
+                    <button onClick={registerComplaint} className="bg-orange-500 text-2xl py-1 rounded px-4">Send</button>
+        }
         </div>
 
     </div>
